@@ -1,4 +1,58 @@
 @import '../../../styles/settings.scss';
 
-// .root {
-// }
+@import '../../../styles/settings.scss';
+
+.logged {
+  display: flex;
+  flex-direction: row;
+
+  .logButton {
+    font-size: 15px;
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+    margin: 10px;
+    padding: 5px 15px;
+    border-radius: 5%;
+    text-decoration: none;
+  }
+}
+
+  .appBar {
+    background-color: blue;
+    margin: auto;
+    .root {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    color: blue;
+    .title {
+      font-size: 30px;
+      padding: 0;
+      margin: 10px;
+      font-weight: 400;
+      text-transform: uppercase;
+      width: 95%;
+      margin-left: 3%;
+      color: white;
+    }
+    .home {
+      font-size: 30px;
+      color: white;
+    }
+    .logged {
+      display: flex;
+      width: 10%;
+      align-items: center;
+      .profile {
+      font-size: 30px;
+      margin-right: 20px;
+      }
+    .button {
+      font-size: 15px;
+      color: white;
+      text-decoration: none;
+      }
+    }
+  }
+}

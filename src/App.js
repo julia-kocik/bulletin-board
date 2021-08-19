@@ -14,6 +14,7 @@ import { PostEdit } from './components/views/PostEdit/PostEdit';
 import { PostAdd } from './components/views/PostAdd/PostAdd';
 import { NotFound } from './components/views/NotFound/NotFound';
 
+
 const theme = createMuiTheme({
   palette: {
     primary: { main: '#2B4C6F' },
