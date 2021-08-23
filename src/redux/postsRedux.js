@@ -1,8 +1,8 @@
 /* selectors */
 export const getAll = ({posts}) => posts.data;
 export const getOne = ({posts}, id) => posts.data.filter(item => item.id === id); 
-export const isLogged = logged => logged;
-console.log(isLogged);
+export const isLogged = item => item;
+
 
 /* action name creator */
 const reducerName = 'posts';

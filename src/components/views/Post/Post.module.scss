@@ -1,4 +1,54 @@
 @import '../../../styles/settings.scss';
 
-// .root {
-// }
+.root {
+    display: flex;
+    flex-direction: column;
+    height: 550px;
+    width: 100%;
+}
+
+.postBox {
+    height: 490px;
+    width: 230px;
+    margin: 10px 20px;
+    border: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+}
+
+.image {
+    height: 30%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.title {
+    font-weight: bold;
+    text-align: center;
+    font-size: 20px;
+}
+
+.price {
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px;
+}
+
+.date {
+    text-align: right;
+    font-weight: bold;
+}
+
+.logged {
+  .button {
+    font-size: 15px;
+    background-color: blue;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    margin-left: 20px;
+    margin-top: 20px;
+    display: inline-block;
+    }
+  }

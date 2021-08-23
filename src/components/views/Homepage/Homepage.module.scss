@@ -2,3 +2,52 @@
 
 // .root {
 // }
+
+.postWrapper {
+    display: flex;
+    height: 550px;
+    width: 100%;
+}
+
+.postBox {
+    height: 490px;
+    width: 230px;
+    margin: 10px 20px;
+    border: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+}
+
+.image {
+    height: 30%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.title {
+    font-weight: bold;
+    text-align: center;
+    font-size: 20px;
+}
+
+.price {
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px;
+}
+
+.logButton {
+    font-size: 15px;
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+    margin: 10px;
+    padding: 5px 15px;
+    border-radius: 5%;
+    text-decoration: none;
+  }
+
+.date {
+    text-align: right;
+    font-weight: bold;
+}

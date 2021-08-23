@@ -11,7 +11,8 @@ import HomeIcon from '@material-ui/icons/Home';
 
 
 
-const Component = ({className, logged, logIn, logOut}) => {
+const Component = ({className, state, logIn, logOut}) => {
+  console.log(state.posts.logged);
   return (
     <div className={clsx(className, styles.root)}>
       <div className={styles.logged}>
@@ -24,7 +25,7 @@ const Component = ({className, logged, logIn, logOut}) => {
             <HomeIcon className={clsx(className, styles.home)}/>
           </Link>
           <h6 className={clsx(className, styles.title)}>Bulletin Board</h6>
-          {logged.posts.logged ? (
+          {state.posts.logged ? (
             <div className={styles.logged}>
               <Link className={styles.button} to={'/post/add'}>Add Post</Link>
             </div>
@@ -40,13 +41,13 @@ const Component = ({className, logged, logIn, logOut}) => {
 
 Component.propTypes = {
   className: PropTypes.string,
-  logged: PropTypes.object,
+  state: PropTypes.object,
   logIn: PropTypes.func,
   logOut: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
-  logged: isLogged(state),
+  state: isLogged(state),
 });
 
 const mapDispatchToProps = dispatch => ({
