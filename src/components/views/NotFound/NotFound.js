@@ -1,5 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
+import HomeIcon from '@material-ui/icons/Home';
+
+
 
 import clsx from 'clsx';
 
@@ -11,7 +15,9 @@ import styles from './NotFound.module.scss';
 const Component = ({className, children}) => (
   <div className={clsx(className, styles.root)}>
     <h2>NotFound</h2>
-    {children}
+    <Link className ={styles.button} to={'/'}>
+      <HomeIcon className={clsx(className, styles.home)}/>
+    </Link>
   </div>
 );
 

@@ -30,7 +30,7 @@ const Component = ({className, state, logIn, logOut}) => {
               <Link className={styles.button} to={'/post/add'}>Add Post</Link>
             </div>
           ) : (
-            <div className={styles.logged}>
+            <div>
               <a className={styles.button} href='https://google.com'>Login</a>
             </div>)}
         </Toolbar>
