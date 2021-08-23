@@ -23,7 +23,9 @@ const Component = ({className, one, loadedData}) => (
     {loadedData.posts.logged 
       ?
       <div className={styles.logged}>
-        <Link className={styles.button} to={'/post/edit'}>Edit Post</Link>
+        {one.map(item => (
+          <Link key={item.id} className={styles.button} to={`/post/${item.id}/edit`}>Edit Post</Link>
+        ))}
       </div>
       :
       ''

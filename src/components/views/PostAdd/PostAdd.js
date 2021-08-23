@@ -30,7 +30,7 @@ const Component = ({className, loadedData, addPost}) => {
       post.id = uuidv4();
       post.publicationDate = new Date().toISOString();
       addPost(post);
-      alert('Your post is added!');
+      alert('Post was added!');
 
       setPost({
         id: '',
