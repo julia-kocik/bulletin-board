@@ -17,7 +17,7 @@ const Component = ({className, loadedData, onePost, editPost}) => {
   const submitForm = (event) => {
     event.preventDefault();
     if(post.title || post.price || post.content || post.image){
-      post.publicationDate = new Date().toISOString();
+      post.publicationDate = new Date().toLocaleDateString();
       editPost(post);
       alert('Post was changed!');
 

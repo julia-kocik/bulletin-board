@@ -28,7 +28,7 @@ const Component = ({className, loadedData, addPost}) => {
     event.preventDefault();
     if(post.title && post.price && post.content && post.image){
       post.id = uuidv4();
-      post.publicationDate = new Date().toISOString();
+      post.publicationDate = new Date().toLocaleDateString();
       addPost(post);
       alert('Post was added!');
 

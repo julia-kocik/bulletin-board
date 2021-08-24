@@ -15,8 +15,8 @@ const Component = ({className, one, loadedData}) => (
       <div className={styles.postBox} key={item.id}>
         <p className={styles.title}>{item.title.toUpperCase()}</p>
         <img className={styles.image} src={item.image} alt="Post item"></img>
-        <p className={styles.price}>{item.price}</p>
-        <p>{item.content}</p>
+        <p className={styles.price}>${item.price}</p>
+        <p className={styles.content}>{item.content}</p>
         <p className={styles.date}>{item.publicationDate}</p>
       </div>
     ))}

@@ -13,7 +13,8 @@
 .postBox {
     height: 510px;
     margin: 10px 20px;
-    border: 1px solid gray;
+    border: 2px solid gray;
+    border-radius: 5px;
     display: flex;
     flex: 0 0 20%;
     flex-direction: column;
@@ -53,4 +54,8 @@
 .date {
     text-align: right;
     font-weight: bold;
+}
+
+.content {
+    padding: 0 10px;
 }
