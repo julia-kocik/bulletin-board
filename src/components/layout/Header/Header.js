@@ -12,7 +12,6 @@ import HomeIcon from '@material-ui/icons/Home';
 
 
 const Component = ({className, state, logIn, logOut}) => {
-  console.log(state.posts.logged);
   return (
     <div className={clsx(className, styles.root)}>
       <div className={styles.logged}>
