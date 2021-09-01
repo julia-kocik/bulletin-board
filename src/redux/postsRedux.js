@@ -1,7 +1,9 @@
+import Axios from 'axios';
 /* selectors */
 export const getAll = ({posts}) => posts.data;
 export const getOne = ({posts}, id) => posts.data.filter(item => item.id === id); 
 export const isLogged = item => item;
+export const getAllPublished = ({posts}) => posts.data.filter(item => item.status === 'published');
 
 
 /* action name creator */
@@ -27,6 +29,21 @@ export const logIn = payload => ({payload, type: LOG_IN});
 export const logOut = payload => ({payload, type: LOG_OUT});
 
 /* thunk creators */
+/* thunk creators */
+export const fetchPublished = () => {
+  return (dispatch, getState) => {
+    dispatch(fetchStarted());
+
+    Axios
+      .get('http://localhost:8000/api/posts')
+      .then(res => {
+        dispatch(fetchSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(fetchError(err.message || true));
+      });
+  };
+};
 
 /* reducer */
 export const reducer = (statePart = [], action = {}) => {
