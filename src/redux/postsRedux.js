@@ -1,4 +1,3 @@
-import { initialState } from './initialState';
 import Axios from 'axios';
 
 /* selectors */
@@ -60,32 +59,6 @@ export const reducer = (statePart = [], action = {}) => {
         },
       };
     }
-    /*
-      case ADD_POST: {
-      return {
-        ...statePart,
-        data: [...statePart.data, action.payload],
-      };
-    }
-      case EDIT_POST: {
-        return {
-          ...statePart,
-          data: statePart.data.map(item => item.id == action.payload.id ? action.payload : post),
-        }
-      }
-      case LOG_IN: {
-        return {
-          ...statePart,
-          logged: true,
-        }
-      }
-      case LOG_OUT: {
-        return {
-          ...statePart,
-          logged: false,
-        }
-      }
-    */
     case FETCH_SUCCESS: {
       return {
         ...statePart,
