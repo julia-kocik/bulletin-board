@@ -49,21 +49,21 @@ export const fetchPublished = () => {
   };
 };
 
-/*
-export const fetchOnePost = id => {
-  return (dispatch) => {
+export const addOnePost= (data) => {
+  return (dispatch, getState) => {
     dispatch(fetchStarted());
+
     Axios
-      .get(`http://localhost:8000/api/posts/${id}`)
+      .post(`http://localhost:8000/api/posts/add`, data)
       .then(res => {
-        dispatch(fetchSuccessSingle(res.data));
+        dispatch(addPost(res.data));
       })
       .catch(err => {
         dispatch(fetchError(err.message || true));
       });
   };
 };
-*/
+
 
 /* reducer */
 export const reducer = (statePart = [], action = {}) => {

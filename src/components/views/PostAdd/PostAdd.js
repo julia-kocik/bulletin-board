@@ -6,19 +6,20 @@ import { v4 as uuidv4 } from 'uuid';
 import clsx from 'clsx';
 
 import { connect } from 'react-redux';
-import { isLogged, addPost } from '../../../redux/postsRedux';
+import { isLogged, addOnePost } from '../../../redux/postsRedux';
 
 import styles from './PostAdd.module.scss';
 
-const Component = ({className, loadedData, addPost}) => {
+const Component = ({className, loadedData, addNewPost}) => {
   const [post, setPost] = useState(
     {
       id: '',
       title: '',
       price: '',
-      content: '',
-      publicationDate: '',
+      text: '',
+      created: '',
       image: '',
+      author: '',
     }
   );
   const handleChange = (event) => {
@@ -26,18 +27,20 @@ const Component = ({className, loadedData, addPost}) => {
   };
   const submitForm = (event) => {
     event.preventDefault();
-    if(post.title && post.price && post.content && post.image){
+    console.log(post.title, post.price, post.text, post.photo, post.author);
+    if(post.title && post.price && post.text && post.photo && post.author){
       post.id = uuidv4();
-      post.publicationDate = new Date().toLocaleDateString();
-      addPost(post);
+      post.created = new Date().toLocaleDateString();
+      addNewPost(post);
       alert('Post was added!');
 
       setPost({
         id: '',
         title: '',
         price: '',
-        content: '',
-        publicationDate: '',
+        text: '',
+        created: '',
+        author: '',
         image: '',
       });
     } else {
@@ -55,10 +58,12 @@ const Component = ({className, loadedData, addPost}) => {
             <input className={styles.formInput} type="text" name="title" onChange={handleChange}></input>
             <label>Price </label>
             <input className={styles.formInput} type="number" name="price" onChange={handleChange}></input>
+            <label>Email </label>
+            <input className={styles.formInput} type="email" name="author" onChange={handleChange}></input>
             <label>Description </label>
-            <textarea className={styles.formInput} cols="50" type="text" name="content" onChange={handleChange}></textarea>
+            <textarea className={styles.formInput} cols="50" type="text" name="text" onChange={handleChange}></textarea>
             <label>Image</label>
-            <input className={styles.imageInput} type="file" name="image" accept=".png, .jpg, .jpeg, .gif" onChange={handleChange}></input>
+            <input className={styles.imageInput} type="file" name="photo" accept=".png, .jpg, .jpeg, .gif" onChange={handleChange}></input>
             <button className={styles.button} type="submit">Send message</button>
           </form>
         </div>
@@ -72,7 +77,7 @@ const Component = ({className, loadedData, addPost}) => {
 Component.propTypes = {
   loadedData: PropTypes.object,
   className: PropTypes.string,
-  addPost: PropTypes.func,
+  addNewPost: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
@@ -80,7 +85,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addPost: post => dispatch(addPost(post)),
+  addNewPost: (newPost) => dispatch(addOnePost(newPost)),
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
