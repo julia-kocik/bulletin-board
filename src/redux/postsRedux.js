@@ -2,7 +2,7 @@ import Axios from 'axios';
 
 /* selectors */
 export const getAll = ({posts}) => posts.data;
-export const getOne = ({posts}, id) => posts.data.filter(item => item.id === id); 
+export const getOne = ({posts}) => posts.singlePost; 
 export const isLogged = item => item;
 export const getAllPublished = ({posts}) => posts.data.filter(item => item.status === 'published');
 
@@ -14,6 +14,7 @@ const createActionName = name => `app/${reducerName}/${name}`;
 /* action types */
 const FETCH_START = createActionName('FETCH_START');
 const FETCH_SUCCESS = createActionName('FETCH_SUCCESS');
+const FETCH_SUCCESS_SINGLE = createActionName('FETCH_SUCCESS_SINGLE');
 const FETCH_ERROR = createActionName('FETCH_ERROR');
 const ADD_POST = createActionName('ADD_POST');
 const EDIT_POST = createActionName('EDIT_POST');
@@ -23,6 +24,7 @@ const LOG_OUT = createActionName('LOG_OUT');
 /* action creators */
 export const fetchStarted = payload => ({ payload, type: FETCH_START });
 export const fetchSuccess = payload => ({ payload, type: FETCH_SUCCESS });
+export const fetchSuccessSingle = payload => ({ payload, type: FETCH_SUCCESS_SINGLE });
 export const fetchError = payload => ({ payload, type: FETCH_ERROR });
 export const addPost = payload => ({payload, type: ADD_POST});
 export const editPost = payload => ({payload, type: EDIT_POST});
@@ -47,6 +49,20 @@ export const fetchPublished = () => {
   };
 };
 
+export const fetchOnePost = id => {
+  return (dispatch) => {
+    dispatch(fetchStarted());
+    Axios
+      .get(`http://localhost:8000/api/posts/${id}`)
+      .then(res => {
+        dispatch(fetchSuccessSingle(res.data));
+      })
+      .catch(err => {
+        dispatch(fetchError(err.message || true));
+      });
+  };
+};
+
 /* reducer */
 export const reducer = (statePart = [], action = {}) => {
   switch (action.type) {
@@ -67,6 +83,16 @@ export const reducer = (statePart = [], action = {}) => {
           error: false,
         },
         data: action.payload,
+      };
+    }
+    case FETCH_SUCCESS_SINGLE: {
+      return {
+        ...statePart,
+        loading: {
+          active: false,
+          error: false,
+        },
+        singlePost: action.payload,
       };
     }
     case FETCH_ERROR: {

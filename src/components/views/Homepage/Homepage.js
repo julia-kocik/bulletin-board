@@ -27,7 +27,7 @@ const Component = ({className, loadedData, fetchPublishedPosts, posts}) => {
             ?
             posts.map(item => 
               (
-                <Link className={styles.postBox} to={`/post/${item._id}`} key={item._id}>
+                <Link className={styles.postBox} to={`/post/${item._id}`} key={item.id}>
                   <p className={styles.title}>{item.title.toUpperCase()}</p>
                   <img className={styles.image} src={item.photo} alt="Post item"></img>        
                   <p className={styles.price}>${item.price}</p>
