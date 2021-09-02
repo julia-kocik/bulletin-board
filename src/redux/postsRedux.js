@@ -49,6 +49,7 @@ export const fetchPublished = () => {
   };
 };
 
+/*
 export const fetchOnePost = id => {
   return (dispatch) => {
     dispatch(fetchStarted());
@@ -62,6 +63,7 @@ export const fetchOnePost = id => {
       });
   };
 };
+*/
 
 /* reducer */
 export const reducer = (statePart = [], action = {}) => {

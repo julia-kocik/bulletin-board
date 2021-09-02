@@ -2,19 +2,31 @@
 
 .root {
     display: flex;
+    align-items: center;
     flex-direction: column;
     height: 550px;
     width: 100%;
 }
 
 .postBox {
-    height: 490px;
-    width: 230px;
+    height: 510px;
+    width: 400px;
     margin: 10px 20px;
     border: 2px solid gray;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
+}
+.postBox {
+    height: 510px;
+    margin: 10px 20px;
+    border: 2px solid gray;
+    border-radius: 5px;
+    display: flex;
+    flex: 0 0 30%;
+    flex-direction: column;
+    text-decoration: none;
+    color: black;
 }
 
 .image {
