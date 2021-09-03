@@ -18,10 +18,15 @@ const Component = ({className, loadedData, addNewPost}) => {
       price: '',
       text: '',
       created: '',
-      image: '',
+      photo: '',
       author: '',
     }
   );
+
+  const handleFile = (event) => {
+    setPost({ ...post, photo: event.target.files[0] });
+  };
+
   const handleChange = (event) => {
     setPost({ ...post, [event.target.name]: event.target.value });
   };
@@ -41,7 +46,7 @@ const Component = ({className, loadedData, addNewPost}) => {
         text: '',
         created: '',
         author: '',
-        image: '',
+        photo: '',
       });
     } else {
       alert('Please fill required fields');
@@ -49,7 +54,7 @@ const Component = ({className, loadedData, addNewPost}) => {
   };
   return (
     <div className={clsx(className, styles.root)}>
-      {loadedData.posts.logged 
+      {loadedData.posts.logged
         ?
         <div>
           <h2 className={styles.title}>Post Add</h2>
@@ -63,7 +68,7 @@ const Component = ({className, loadedData, addNewPost}) => {
             <label>Description </label>
             <textarea className={styles.formInput} cols="50" type="text" name="text" onChange={handleChange}></textarea>
             <label>Image</label>
-            <input className={styles.imageInput} type="file" name="photo" accept=".png, .jpg, .jpeg, .gif" onChange={handleChange}></input>
+            <input className={styles.imageInput} type="file" name="photo" accept=".png, .jpg, .jpeg, .gif" onChange={handleFile}></input>
             <button className={styles.button} type="submit">Send message</button>
           </form>
         </div>

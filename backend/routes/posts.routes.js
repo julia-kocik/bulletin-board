@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-
+const multer  = require('multer');
+const upload = multer({ dest: 'uploads/' });
 const Post = require('../models/post.model');
 
 router.get('/posts', async (req, res) => {
@@ -29,25 +30,27 @@ router.get('/posts/:id', async (req, res) => {
   }
 });
 
-router.post('/posts/add', async (req, res) => {
+router.post('/posts', upload.single('photo'), async (req, res) => {
   try {
     const {
       title,
-      status, 
-      created, 
+      created,
       author,
       price,
       text,
-      photo,
     } = req.body;
+
+    const photo = req.file;
+    const fileName = photo.filename + '.' + photo.originalname.split('.').pop();
+    console.log(fileName);
     const newPost = new Post({
       title: title,
-      status: status,
+      status: 'published',
       created: created,
       author: author,
       price: price,
       text: text,
-      photo: photo,
+      photo: fileName,
     });
     await newPost.save();
     res.json({ message: 'OK' });

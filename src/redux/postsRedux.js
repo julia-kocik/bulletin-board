@@ -53,8 +53,17 @@ export const addOnePost= (data) => {
   return (dispatch, getState) => {
     dispatch(fetchStarted());
 
+    const fd = new FormData();
+    for(const param in data) {
+      fd.append(param, data[param]);
+    }
+
     Axios
-      .post(`http://localhost:8000/api/posts/add`, data)
+      .post(`http://localhost:8000/api/posts`, fd, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
       .then(res => {
         dispatch(addPost(res.data));
       })

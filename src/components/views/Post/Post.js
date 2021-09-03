@@ -26,7 +26,7 @@ const Component = ({className, loadedData, fetchPublishedPosts, linkId, posts}) 
           <p className={styles.date}>Created: {one.created}</p>
           <p className={styles.date}>Updated: {one.updated}</p>
         </div>
-      ))};
+      ))}
     
       {loadedData.posts.logged 
         ?
