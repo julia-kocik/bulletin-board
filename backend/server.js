@@ -9,8 +9,11 @@ const app = express();
 
 /* MIDDLEWARE */
 app.use(cors());
+app.use(express.static(path.join(__dirname, '/uploads')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+console.log(__dirname);
+
 
 /* API ENDPOINTS */
 app.use('/api', postsRoutes);
@@ -37,5 +40,5 @@ db.on('error', err => console.log('Error: ' + err));
 /* START SERVER */
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
-  console.log('Server is running on port: '+port);
+  console.log('Server is running on port: '+ port);
 });

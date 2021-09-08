@@ -50,7 +50,7 @@ const Component = ({className, loadedData, fetchPublishedPosts, posts}) => {
 Component.propTypes = {
   className: PropTypes.string,
   loadedData: PropTypes.object,
-  posts: PropTypes.object,
+  posts: PropTypes.array,
   fetchPublishedPosts: PropTypes.func,
 };
 

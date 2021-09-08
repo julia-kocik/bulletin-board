@@ -41,6 +41,7 @@ router.post('/posts', upload.single('photo'), async (req, res) => {
     } = req.body;
 
     const photo = req.file;
+    console.log(photo);
     const fileName = photo.filename + '.' + photo.originalname.split('.').pop();
     console.log(fileName);
     const newPost = new Post({

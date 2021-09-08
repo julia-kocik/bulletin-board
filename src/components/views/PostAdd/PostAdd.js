@@ -58,7 +58,7 @@ const Component = ({className, loadedData, addNewPost}) => {
         ?
         <div>
           <h2 className={styles.title}>Post Add</h2>
-          <form className={styles.adForm} action="/contact/send-message" method="POST" encType="multipart/form-data" onSubmit={submitForm}>
+          <form className={styles.adForm} action="/posts" method="POST" encType="multipart/form-data" onSubmit={submitForm}>
             <label>Title</label>
             <input className={styles.formInput} type="text" name="title" onChange={handleChange}></input>
             <label>Price </label>

@@ -14,12 +14,14 @@ const Component = ({className, loadedData, fetchPublishedPosts, linkId, posts}) 
   useEffect(() => {
     fetchPublishedPosts();
   }, [fetchPublishedPosts]);
+  const imageUrl = '//' + window.location.hostname + (window.location.hostname === 'localhost' ? ':8000' : '/');
+  console.log(imageUrl);
   return (
     <div className={clsx(className, styles.root)}>
       {posts.filter(element => element._id === linkId).map(one => (
         <div className={styles.postBox} key={one._id}>
           <p className={styles.title}>{one.title.toUpperCase()}</p>
-          <img className={styles.image} src={one.photo} alt="Post one"></img>
+          <img className={styles.image} src={`${imageUrl}/uploads/${one.photo}`} alt="Post one"></img>
           <p className={styles.price}>${one.price}</p>
           <p className={styles.content}>Description: {one.text}</p>
           <p className={styles.content}>Status: {one.status}</p>
